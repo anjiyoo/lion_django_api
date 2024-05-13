@@ -36,22 +36,28 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'api',
-    'drf_yasg',
-    'apiset',
-    'tokenapi',
-    'rest_framework.authtoken',  # 토큰
-    'frontbackdev',
+    'api',  # 앱
+    'apiset',  # 앱
     'rest_framework',
-    'corsheaders',
+    'drf_yasg',
+    # 'tokenapi',  # 앱
+    'rest_framework.authtoken',  # 토큰
+    'frontbackdev',  # 앱
+    'corsheaders', # cors
+    'filterREST',  # 앱 등록
+    'pageREST',  # 앱 등록
 ]
 
 # 추가
 REST_FRAMEWORK = {
+    # token
     'DEFAULT_AUTHENTICATION_CLASSES': [
         'rest_framework.authentication.TokenAuthentication',
     ],
-    # 인증 해제
+    # filters
+    'DEFAULT_FILTER_BACKENDS': ['django_filters.rest_framework.DjangoFilterBackend']
+
+    # 인증
     # 'DEFAULT_PERMISSION_CLASSES': [
     #     'rest_framework.permissions.IsAuthenticated',  # 인증된 사용자만 접근 허용
     # ],

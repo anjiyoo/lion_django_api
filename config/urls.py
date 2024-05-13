@@ -37,5 +37,7 @@ urlpatterns = [
     path('apiset/', include("apiset.urls")),  # DRF 느낌
     path('swagger/', schema_view.with_ui('swagger', cache_timeout=0), name='schema-swagger-ui'),
     path('token/', include("tokenapi.urls")),
-    path('frontbackdev/', include("frontbackdev.urls"))
+    path('frontbackdev/', include("frontbackdev.urls")),
+    path('filter/', include("filterREST.urls")),
+    path('page/', include("pageREST.urls")),
 ]

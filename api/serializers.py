@@ -1,4 +1,5 @@
 import json
+
 def serialize_product(product):
     return {
         "id": product.id,
