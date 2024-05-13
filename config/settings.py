@@ -29,7 +29,6 @@ ALLOWED_HOSTS = []
 
 
 # Application definition
-
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -37,11 +36,26 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'rest_framework',
     'api',
     'drf_yasg',
     'apiset',
+    'tokenapi',
+    'rest_framework.authtoken',  # 토큰
+    'frontbackdev',
+    'rest_framework',
+    'corsheaders',
 ]
+
+# 추가
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework.authentication.TokenAuthentication',
+    ],
+    # 인증 해제
+    # 'DEFAULT_PERMISSION_CLASSES': [
+    #     'rest_framework.permissions.IsAuthenticated',  # 인증된 사용자만 접근 허용
+    # ],
+}
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -51,6 +65,8 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
+    'django.middleware.common.CommonMiddleware',  # 주의: CorsMiddleware 아래에 있어야 함
 ]
 
 ROOT_URLCONF = 'config.urls'
@@ -70,6 +86,11 @@ TEMPLATES = [
         },
     },
 ]
+
+CORS_ALLOW_ALL_ORIGINS = True  # 모든 도메인에서 요청 허용
+# # CORS_ALLOWED_ORIGINS = [
+# #     '<http://localhost:3000>',  로컬호스트의 3000 포트를 사용하는 클라이언트만 허용
+# # ]
 
 WSGI_APPLICATION = 'config.wsgi.application'
 

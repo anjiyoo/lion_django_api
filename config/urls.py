@@ -36,4 +36,6 @@ urlpatterns = [
     path('api/', include("api.urls")),  # 베이스 코드 느낌
     path('apiset/', include("apiset.urls")),  # DRF 느낌
     path('swagger/', schema_view.with_ui('swagger', cache_timeout=0), name='schema-swagger-ui'),
+    path('token/', include("tokenapi.urls")),
+    path('frontbackdev/', include("frontbackdev.urls"))
 ]
